@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Business Casual - Start Bootstrap Theme</title>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='assets/favicon.ico')}}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1 class="site-heading text-center text-faded d-none d-lg-block">
+
+            <span class="site-heading-lower">TU CULTIVO</span>
+        </h1>
+    </header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="form_ini.html?cod={{cod}}">Regresar</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="form_nuevo_lote.html?cod={{cod}}">Crear nuevo lote</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+
+            </div>
+        </div>
+    </section>
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    {% if lote %}
+                    <div class="container-fluid">
+                        <div class="album py-5 bg-light">
+                            <div class="container">
+
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                                    {# Aqui comienza el ciclo de la lista de lotes #}
+                                    {% for item in lote %}
+
+                                    <div class="col">
+                                        <div class="card">
+                                            {% if item.5 %}
+                                            <div class="card">
+
+                                                <div clas="row row-cols-1">
+                                                    <div class="col" style="background-color:cornsilk">
+                                                        <svg width="100%" height="250" xmlns="" role="img">
+
+                                                            <image xlink:href="/static/assets/img/lotes/{{item.5}}" x=""
+                                                                y="" height="100%" width="100%" />
+
+                                                            {% if item.2 > 1000: %}<image
+                                                                xlink:href="/static/assets/icon/notificacion.png" alt=""
+                                                                x="90%" y="3%"> {% endif %}
+                                                        </svg>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+
+                                            {% else %}
+                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="250"
+                                                xmlns="" role="img" aria-label="Placeholder: Thumbnail"
+                                                preserveAspectRatio="xMidYMid slice" focusable="false">
+
+
+                                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                                    fill="#eceeef" dy=".3em">Sin imagen</text>
+                                                {% if item.2 > 1000: %}<image
+                                                    xlink:href="/static/assets/icon/notificacion.png" alt="" x="90%"
+                                                    y="3%"> {% endif %}
+                                            </svg>
+                                            {% endif %}
+                                            <div class="card-body">
+                                                <div class="card-text m-1">
+                                                    <small class="card-text">{{item.1}}</small>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary"><img
+                                                                src="/static/assets/icon/icons8-edit-24.png" /></button>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary"><img
+                                                                src="/static/assets/icon/icons8-trash-can-24.png" /></button>
+                                                        <a href="/form_planta_lote.html?cod={{cod}}&lote={{item.0}}"><button type="button"
+                                                            class="btn btn-sm btn-outline-secondary"><img
+                                                                src="/static/assets/icon/seguimiento.png" /></button></a>
+
+                                                    </div>
+                                                    <small class="text-muted"> Area {{item.2}} mt² </small>
+
+                                                </div>
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% else %}
+                                    <div class="cta-inner bg-faded text-center rounded">
+                                        <h2 class="section-heading mb-4">
+                                            <span class="section-heading-upper">Ups!</span>
+                                            <span class="section-heading-lower">Aun no tienes lotes</span>
+                                        </h2>
+                                        <p class="mb-0">Debes crear los lotes del cultivo</p>
+                                        <br>
+                                        <a class="p-3 " href="form_nuevo_lote.html?cod={{cod}}"><input name="" id=""
+                                                class="btn btn-primary" type="button" value="Crear lote"></a>
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+    </section>
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+            <p class="m-0 small">Copyright &copy; Your Website 2021</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="static/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

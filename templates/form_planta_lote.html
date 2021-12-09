@@ -1,0 +1,285 @@
+{% extends "base_planta_lote.html" %}
+
+
+{% block siembra %}
+
+
+<div class="text-center">
+
+    <h2 class="section-heading mb-4">
+        <span class="section-heading-upper">ESTADO:</span>
+        <span class="section-heading-lower">{{info.estado_lote}}</span>
+    </h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="mb-0">Te contamos los cuidados en esta etapa!</h5>
+        </div>
+
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <h6 class="mb-0">Antes que nada te mostraremos algunos tips que debes tener en cuenta en el
+                terreno:</h6>
+
+
+        </div>
+
+    </div>
+
+    <br>
+    <div class="row text-center">
+        <div class="col">
+            <iframe width="520" height="315" src="https://www.youtube.com/embed/nfYbz0BNIP8">
+            </iframe>
+
+        </div>
+
+    </div>
+    <br>
+    <div class="row ">
+        <div class="col">
+            <h6 class="mb-0">Ahora vamos a ver la metodologia para una siembra
+                que nos genere los mejores resultados:</h6>
+        </div>
+
+    </div>
+    <br>
+    <div class="row text-center">
+        <div class="col">
+            <iframe width="520" height="315" src="https://www.youtube.com/embed/WIFyiI1Pa-I">
+            </iframe>
+
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div class="row">
+
+
+        <div class="col-4 pd-2">
+            <img src="static/assets/img/siembra.jpg" class="img-thumbnail" alt="">
+
+        </div>
+
+
+        <div class="col-8">
+            <h5 class="mb-0">Recuerda!</h5>
+            <br>
+            <h6 class="mb-0">1. Prepara adecuadamente el terreno</h6>
+            <h6 class="mb-0">2. Realiza los surcos</h6>
+            <h6 class="mb-0">3. Revisa la raiz de tu planta antes de sembrarla</h6>
+            <h6 class="mb-0">4. Ten en cuenta la profundiad del hoyado</h6>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}
+
+{% block crecimiento %}
+
+<div class="text-center">
+    <h2 class="section-heading mb-4">
+        <span class="section-heading-upper">ESTADO:</span>
+        <span class="section-heading-lower">{{info.estado_lote}}</span>
+    </h2>
+
+</div>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-8">
+            <div class="card-header border">
+                <div class="row">
+                    <div class="col-8">
+                        <h5>Realiza un diagnostico</h5>
+
+                    </div>
+                    <div class="col-4">
+                        <span>No. Muestra </span><span id="muestra"></span>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="card border card-body">
+                <input type="hidden" id="plantas" value={{info.n_plantas}}>
+                <h6>Toma una muestra de <span id="n_muestra"></span> plantas e ingresa la siguiente información: </h6>
+                <form action="/diagnostico" method="post">
+                    <div class="card border-secondary">
+                        <div class="row">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Humedad</h4>
+                                <p class="card-text">Utilizando nuestro sensor para medir la humedad del suelo
+                                    en la raíz de la planta hallarás el porcentaje.
+                                </p>
+                                <label for="">%</label>
+                                <input class="form-group" id="humedad" type="number" min=0 name="humedad"
+                                    oninput="validity.valid||(value=''); ">
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="card border-secondary">
+                        <div class="row">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Altura</h4>
+                                <p class="card-text">Toma la medida desde el suelo hasta el copo de la planta.</p>
+                                <label for="">cm</label>
+                                <input class="form-group" id="altura" type="number" min=0 name="altura"
+                                    oninput="validity.valid||(value='');">
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="card border-secondary">
+                        <div class="row">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Ancho</h4>
+                                <p class="card-text">Mide el ancho de la planta de izquierda a derecha.</p>
+                                <label for="">cm</label>
+                                <input class="form-group" id="ancho" type="number" min=0 name="ancho"
+                                    oninput="validity.valid||(value='');">
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="card border-secondary">
+                        <div class="row">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Arcilla</h4>
+                                <p class="card-text">Mide los niveles de arcilla en el suelo con nuestro sensor para
+                                    medición.</p>
+                                <label for="">mm</label>
+                                <input class="form-group" id="arcilla" type="number" min=0 name="ancho"
+                                    oninput="validity.valid||(value='');">
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="card border-secondary">
+                        <div class="row">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Nitrogeno</h4>
+                                <p class="card-text">Mide los niveles de nitrogeno en el suelo con nuestro sensor para
+                                    medición.</p>
+                                <label for="">%</label>
+                                <input class="form-group" id="nitrogeno" type="number" min=0 name="ancho"
+                                    oninput="validity.valid||(value='');">
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-8">
+
+                            <button type="button" class="btn btn-primary" onclick="return Apilar();">Agregar
+                                muestra</button>
+
+                        </div>
+
+                        <div class="col-2">
+                            <button class="btn btn-primary" id="envio" type="submit">Enviar</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
+
+                        </div>
+
+                    </div>
+                    <input type="hidden" name="cod" value="{{cod}}">
+                    <input type="hidden" name="lote" value="{{lote}}">
+                    <input type="hidden" name="cod_prueba_est" value="1">
+                    <input type="hidden" name="datos[]" id="datos_envio">
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const n_muestra = document.getElementById("n_muestra");
+    const plantas = document.getElementById("plantas")
+    n_muestra.innerHTML = Math.round((plantas.value) * 0.1)
+    var envio = document.getElementById("envio")
+    envio.disabled = true;
+
+    function Apilar() {
+        const humedad = document.getElementById("humedad");
+        const altura = document.getElementById("altura");
+        const ancho = document.getElementById("ancho");
+        const arcilla = document.getElementById("arcilla");
+        const nitrogeno = document.getElementById("nitrogeno");
+
+        if (nitrogeno.value && arcilla.value && ancho.value && altura.value && humedad.value) {
+
+            contador = contador + 1;
+            muestra.innerHTML = contador;
+
+            datos.push(humedad.value,altura.value,ancho.value,arcilla.value,nitrogeno.value);
+            var datos_envio = document.getElementById("datos_envio");
+            datos_envio.value = datos;
+            humedad.value = "";
+            altura.value = "";
+            ancho.value = "";
+            arcilla.value = "";
+            nitrogeno.value = "";
+            if (n_muestra.textContent==contador){
+                envio.disabled=false;
+
+            }
+           
+        }
+        else {
+            alert("Faltan datos para la muestra");
+        }
+
+
+
+    }
+
+</script>
+
+
+{% endblock %}
+
+{% block afloracion %}
+
+<div class="text-center">
+
+    <h2 class="section-heading mb-4">
+        <span class="section-heading-upper">ESTADO:</span>
+        <span class="section-heading-lower">{{info.estado_lote}}</span>
+    </h2>
+</div>
+
+{% endblock %}

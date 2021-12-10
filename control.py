@@ -1,3 +1,4 @@
+from os import name
 from re import match
 from typing import Match
 from flask import Flask, render_template, abort, request, redirect, url_for, session
@@ -296,5 +297,6 @@ class controles():
         return(datos)
 
 
+if __name__=='main':
 
-app.run(port=5000, debug=True)
+    app.run(port=5000, debug=True)
